@@ -21,6 +21,17 @@ def save_object(file_path,obj):
         
     except Exception as e:
         raise CustomException(e,sys)
+    
+def load_object(file_path):
+    '''
+    Taking the file path of the pickle file, 
+    reading it using read byte mode and loading the object using dill
+    '''
+    try:
+        with open(file_path, "rb") as file_obj:
+            return dill.load(file_obj)
+    except Exception as e:
+        raise CustomException(e, sys)
 
 def evaluate_models(X_train, y_train, X_test, y_test, models, params):
     try:
